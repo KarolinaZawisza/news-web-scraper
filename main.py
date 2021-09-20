@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import numpy
+import mail_manager
 
 yc_web_page = requests.get('https://news.ycombinator.com/news').text
 
@@ -16,7 +17,10 @@ story_score = [score.getText() for score in soup.find_all(name='span', class_='s
 story_score_int = [int(story.split()[0]) for story in story_score]
 index = story_score_int.index(numpy.max(story_score_int))
 
-print(stories_texts[index])
-print(stories_links[index])
-print(story_score_int[index])
-print(index)
+message = (f'SUBJECT: Daily Hack News \n\n'
+           f'Checkout today most popular news!\n'
+           f'Title: {stories_texts[index]}\n'
+           f'Link: {stories_links[index]}\n'
+           f'This story received {story_score_int[index]} votes today!')
+
+mail_manager.send_email(message)
