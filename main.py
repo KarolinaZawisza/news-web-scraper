@@ -20,16 +20,3 @@ print(stories_texts[index])
 print(stories_links[index])
 print(story_score_int[index])
 print(index)
-
-# with open('website.html') as website_file:
-#     html = website_file.read()
-#
-# soup = BeautifulSoup(html, features='lxml')
-# a = soup.find_all(class_='heading')
-#
-# company_url = soup.select_one(selector='p a', )
-# print(company_url.get_text())
-# #
-# # for tag in a:
-# #     print(tag.get_text())
-# #     print(tag.get('href'))
